@@ -11,7 +11,7 @@ class empleado extends Model
     protected $fillable=[
     'cui',
     'nombre',
-    'apellidos',
+    'apellido',
     'email',
     'direccion',
     'telefono_casa',

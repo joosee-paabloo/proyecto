@@ -18,9 +18,9 @@ class CreateEmpleadoTable extends Migration
             $table->string('nombre',40);
             $table->string('apellido',40);
             $table->string('email',40);
-            $table->string('direccion',40);
-            $table->int('telefono_casa');
-            $table->int('telefono_movil');
+            $table->string('direccion',60);
+            $table->string('telefono_casa',20);
+            $table->string('telefono_movil',20);
             $table->timestamps();
         });
     }
