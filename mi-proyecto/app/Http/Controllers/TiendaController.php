@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\tienda;
 
 class TiendaController extends Controller
 {
@@ -11,9 +12,15 @@ class TiendaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        //
+        return view("tiendas.index");
     }
 
     /**
