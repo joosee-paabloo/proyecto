@@ -11,5 +11,5 @@ class serie extends Model
     protected $fillable=[
     'id',
     'serie'
-    ]
+    ];
 }

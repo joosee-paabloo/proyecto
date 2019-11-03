@@ -15,7 +15,6 @@ class TiendaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -44,7 +43,17 @@ class TiendaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+    $tienda = new Tienda;
+    $tienda->nombre = $request->nombre;
+    $tienda->nit = $request->nit;
+    $tienda->encargado_id = $request->encargado_id;
+    $tienda->ubicacion = $request->ubicacion;
+    $tienda->capacidad = $request->capacidad;
+    $tienda->save();
+
+    return view("tiendas.index");
+
     }
 
     /**
@@ -53,9 +62,15 @@ class TiendaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
         //
+    }
+
+    public function list()
+    {
+        $tienda=tienda::all();
+        return view ("tiendas.list",compact("tienda"));
     }
 
     /**
@@ -64,9 +79,10 @@ class TiendaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        return view("tiendas.edit");
+        $tienda=tienda::findOrFail($id);
+        return view ("tiendas.edit",compact("tienda"));
     }
 
     /**
@@ -78,7 +94,9 @@ class TiendaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $tienda=tienda::findOrFail($id);
+        $tienda->update($request->all());
+        return redirect("/tienda");
     }
 
     /**
@@ -89,6 +107,8 @@ class TiendaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tienda=tienda::findOrFail($id);
+        $tienda->delete();
+        return redirect("/tienda");
     }
 }

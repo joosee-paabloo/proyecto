@@ -44,7 +44,14 @@ class ProveedorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $proveedor = new Proveedor;
+        $proveedor->nit = $request->nit;
+        $proveedor->nombre = $request->nombre;
+        $proveedor->telefono = $request->telefono;
+        $proveedor->direccion = $request->direccion;
+        $proveedor->save();
+
+    return view("proveedores.index");
     }
 
     /**
@@ -58,15 +65,22 @@ class ProveedorController extends Controller
         //
     }
 
+    public function list()
+    {
+        $proveedor=proveedor::all();
+        return view ("proveedores.list",compact("proveedor"));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        return view("proveedores.edit");
+        $proveedor=proveedor::findOrFail($id);
+        return view ("proveedores.edit",compact("proveedor"));
     }
 
     /**
@@ -78,7 +92,9 @@ class ProveedorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $proveedor=proveedor::findOrFail($id);
+        $proveedor->update($request->all());
+        return redirect("/proveedor");
     }
 
     /**
@@ -89,6 +105,8 @@ class ProveedorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $proveedor=proveedor::findOrFail($id);
+        $proveedor->delete();
+        return redirect("/proveedor");
     }
 }

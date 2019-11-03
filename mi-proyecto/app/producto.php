@@ -15,5 +15,5 @@ class producto extends Model
     'ubicacion',
     'costo',
     'precio_venta'
-    ]
+    ];
 }

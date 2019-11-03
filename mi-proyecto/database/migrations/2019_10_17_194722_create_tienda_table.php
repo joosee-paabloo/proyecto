@@ -15,11 +15,14 @@ class CreateTiendaTable extends Migration
     {
         Schema::create('tienda', function (Blueprint $table) {
             $table->Increments('id');
+            $table->string('nombre',40);
             $table->string('nit',25);
             $table->string('encargado_id',40);
             $table->string('ubicacion',40);
             $table->string('capacidad',40);
             $table->timestamps();
+
+
         });
     }
 

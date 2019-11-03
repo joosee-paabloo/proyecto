@@ -58,6 +58,11 @@ class SerieController extends Controller
         //
     }
 
+    public function list()
+    {
+        //
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

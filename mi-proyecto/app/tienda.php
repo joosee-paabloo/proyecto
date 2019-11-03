@@ -15,5 +15,5 @@ class tienda extends Model
     'encargado_id',
     'ubicacion',
     'capacidad'
-	]
+	];
 }

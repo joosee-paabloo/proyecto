@@ -16,5 +16,5 @@ class empleado extends Model
     'direccion',
     'telefono_casa',
     'telefono_movil'
-	]
+	];
 }

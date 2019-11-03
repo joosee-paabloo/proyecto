@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Auth;
+use App\producto;
 
 class ProductoController extends Controller
 {
@@ -44,7 +45,16 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $producto = new Producto;
+        $producto->codigo = $request->codigo;
+        $producto->nombre = $request->nombre;
+        $producto->proveedor_id = $request->proveedor_id;
+        $producto->ubicacion = $request->ubicacion;
+        $producto->costo = $request->costo;
+        $producto->precio_venta = $request->precio_venta;
+        $producto->save();
+
+    return view("productos.index");
     }
 
     /**
@@ -58,15 +68,22 @@ class ProductoController extends Controller
         //
     }
 
+    public function list()
+    {
+        $producto=producto::all();
+        return view ("productos.list",compact("producto"));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        return view("productos.edit");
+        $producto=producto::findOrFail($id);
+        return view ("productos.edit",compact("producto"));
     }
 
     /**
@@ -78,7 +95,9 @@ class ProductoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $producto=producto::findOrFail($id);
+        $producto->update($request->all());
+        return redirect("/producto");
     }
 
     /**
@@ -89,6 +108,8 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $producto=producto::findOrFail($id);
+        $producto->delete();
+        return redirect("/producto");
     }
 }

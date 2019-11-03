@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Mo del;
+use Illuminate\Database\Eloquent\Model;
 
 class proveedor extends Model
 {
@@ -13,5 +13,5 @@ class proveedor extends Model
     'nombre',
     'telefono',
     'direccion'
-    ]
+    ];
 }

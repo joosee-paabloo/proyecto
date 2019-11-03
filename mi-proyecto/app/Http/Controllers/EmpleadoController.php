@@ -44,7 +44,17 @@ class EmpleadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $empleado = new Empleado;
+        $empleado->cui = $request->cui;
+        $empleado->nombre = $request->nombre;
+        $empleado->apellido = $request->apellido;
+        $empleado->email = $request->email;
+        $empleado->direccion = $request->direccion;
+        $empleado->telefono_casa = $request->telefono_casa;
+        $empleado->telefono_movil = $request->telefono_movil;
+        $empleado->save();
+
+    return view("empleados.index");
     }
 
     /**
@@ -58,15 +68,22 @@ class EmpleadoController extends Controller
         //
     }
 
+    public function list()
+    {
+        $empleado=empleado::all();
+        return view ("empleados.list",compact("empleado"));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $id 
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        return view("empleados.edit");
+        $empleado=empleado::findOrFail($id);
+        return view ("empleados.edit",compact("empleado"));
     }
 
     /**
@@ -78,7 +95,9 @@ class EmpleadoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $empleado=empleado::findOrFail($id);
+        $empleado->update($request->all());
+        return redirect("/empleado");
     }
 
     /**
@@ -89,6 +108,8 @@ class EmpleadoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $empleado=empleado::findOrFail($id);
+        $empleado->delete();
+        return redirect("/empleado");
     }
 }
