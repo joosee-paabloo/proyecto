@@ -91,7 +91,7 @@
                     <a href="{{'/producto'}}">Productos</a>
                     <a href="{{'/tienda'}}">Tiendas</a>
                     <a href="{{'/empleado'}}">Empleados</a>
-                    <a href="{{'/serie'}}">Facturación</a>
+                    <!-- <a href="{{'/serie'}}">Facturación</a> -->
                
                 </div>
             </div>

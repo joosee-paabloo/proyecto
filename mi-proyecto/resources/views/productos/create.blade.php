@@ -4,7 +4,7 @@
 <div class="col-sm-offset-3 col-sm-6">
     <div class="col-sm-offset-3 col-sm-6">
     <div class="panel-title">
-        <h2>INGRESO EMPLEADO</h2>
+        <h2>INGRESO PRODUCTO</h2>
     </div>
     </div>
 
@@ -14,7 +14,7 @@
         <!-- Display Validation Errors -->
        
         <!-- New Task Form -->
-        <form action="/empleado/save" method="POST" >
+        <form action="/producto/save" method="POST" >
             {{ csrf_field() }}
 
             <!-- Task Name -->
@@ -53,9 +53,9 @@
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-6">
                     <button type="submit" class="btn btn-default">
-                        <i class="fa fa-plus"></i> Agregar Empleado
+                        <i class="fa fa-plus"></i> Agregar Producto
                     </button>
-                    <button><a href="{{ '/empleado' }}">Regresar</a></button>
+                    <button><a href="{{ '/producto' }}">Regresar</a></button>
                 </div>
             </div>
         </form>
